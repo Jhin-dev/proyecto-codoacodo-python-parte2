@@ -1,0 +1,79 @@
+{% extends 'public/base_cpanel.html' %}
+<!--Cambiando el title-->
+{% block title %}Crud con Python 🐍 | Registrar Sitio{% endblock %}
+<!---->
+{% block customCSS %}
+<link rel="stylesheet" href="{{ url_for('static', filename ='assets/css/file.css') }}" />
+{% endblock %}
+
+<!--Inicio del block-->
+{% block body %}
+<!---->
+{% if (detalle_sitio|length) %}
+<div class="card" style="border-radius: 0px !important">
+  <div class="row justify-content-center mb-2">
+    <div class="col-md-12">
+      <h3 class="text-center mt-5 mb-3">
+        <a href="/lista-de-sitios">
+          <i class="bi bi-arrow-left-circle"></i>
+        </a>
+        INFORMACIÓN DEL SITIO
+      </h3>
+      <hr />
+    </div>
+  </div>
+
+  <div class="row justify-content-center mb-2">
+    <div class="col-md-10">
+      <div class="card-body">
+        <div class="row">
+          <div class="col-md-6">
+            <label for="nombre_sitio" class="form-label">
+              Nombre
+            </label>
+            <br />
+            {{ detalle_sitio.nombre_sitio}}
+          </div>
+          <div class="col-md-6">
+            <label for="ciudad_sitio" class="form-label">
+              Ciudad
+            </label>
+            <br />
+            {{ detalle_sitio.ciudad_sitio}}
+          </div>
+        </div>
+
+        <div class="row mt-2">
+          <div class="col-md-6">
+            <label for="provincia_sitio" class="form-label">
+              Provincia
+            </label>
+            <br />
+            {{ detalle_sitio.provincia_sitio}}
+          </div>
+        </div>
+
+        <div class="row mt-2">
+          <div class="col-md-6">
+            <label for="" class="form-label"> IMAGEN DEL SITIO </label>
+            <br />
+            <img style="width: 200px" src="/static/fotos_sitios/{{ detalle_sitio.foto_sitio }}" alt="imagen-sitio" />
+          </div>
+          <div class="col-md-6">
+            <label for="descripcion_sitio" class="form-label">
+              Descripcion
+            </label>
+            <br />
+            {{ detalle_sitio.descripcion_sitio}}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% else %}
+<h2 class="text-center">
+  No existe el Sitio 😭
+  <hr />
+</h2>
+{% endif %} {% endblock %}

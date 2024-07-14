@@ -1,0 +1,115 @@
+{% extends 'public/base_cpanel.html' %}
+<!--Cambiando el title-->
+{% block title %}Crud con Python 🐍 | Registrar Nuevo Sitio{% endblock %}
+<!---->
+{% block customCSS %}
+<link rel="stylesheet" href="{{ url_for('static', filename ='assets/css/file.css') }}" />
+{% endblock %}
+
+<!--Inicio del block-->
+{% block body %}
+<div class="card" style="border-radius: 0px !important">
+  {% if respuestaSitio|length %}
+  <div class="row justify-content-center mb-2">
+    <div class="col-md-12">
+      <h3 class="text-center mt-5 mb-3">
+        <a href="/lista-de-sitios">
+          <i class="bi bi-arrow-left-circle"></i>
+        </a>
+        ACTUALIZAR DATOS DE SITIO
+      </h3>
+      <hr />
+    </div>
+  </div>
+
+  <div class="row justify-content-center mb-2">
+    <div class="col-md-10">
+      <form class="form-horizontal mx-auto" method="POST"
+        action="{{ url_for('actualizarSitio', id = respuestaSitio.id_sitio ) }}" autocomplete="off"
+        enctype="multipart/form-data">
+        <input type="text" class="form-control" name="id_sitio" value="{{ respuestaSitio.id_sitio }}" required hidden />
+
+        <div class="card-body">
+          <div class="row">
+            <div class="col-md-6">
+              <label for="nombre_sitio" class="form-label">
+                Nombre
+              </label>
+              <input type="text" name="nombre_sitio" value="{{ respuestaSitio.nombre_sitio }}" class="form-control"
+                required />
+            </div>
+            <div class="col-md-6">
+              <label for="ciudad_sitio" class="form-label">
+                Ciudad
+              </label>
+              <input class="form-control" type="text" name="ciudad_sitio" value="{{ respuestaSitio.ciudad_sitio }}"
+                required />
+            </div>
+          </div>
+
+          <div class="row mt-2">
+            <div class="col-md-6">
+              <label for="provincia_sitio" class="form-label">
+                Provincia
+              </label>
+              <input class="form-control" type="text" name="provincia_sitio"
+                value="{{ respuestaSitio.provincia_sitio }}" required />
+            </div>
+            <div class="col-md-6">
+              <label for="descripcion_sitio" class="form-label">
+                Descripcion
+              </label>
+              <input class="form-control" type="text" name="descripcion_sitio"
+                value="{{ respuestaSitio.descripcion_sitio }}" required />
+            </div>
+          </div>
+
+
+          <div class="row">
+            <div class="col-md-6">
+              <label for="" class="form-label"> FOTO DE SITIO </label>
+              <div class="content-foto-sitio">
+                <img src="/static/fotos_sitios/{{ respuestaSitio.foto_sitio }}"
+                  alt="{{ respuestaSitio.nombre_sitio }}" />
+              </div>
+            </div>
+            <div class="col-md-6 h-100">
+              <label for="" class="form-label">
+                ACTUALIZAR FOTO DE SITIO
+              </label>
+              <div class="avatar-upload">
+                <div class="avatar-edit">
+                  <input type="file" name="foto_sitio" id="imageUpload" accept=".png, .jpg, .jpeg" />
+                  <label for="imageUpload"><i class="bi bi-pen"></i></label>
+                </div>
+                <div class="avatar-preview">
+                  {% set url_avatar= url_for('static', filename
+                  ='assets/img/images.png') %}
+                  <div id="imagePreview" style="background-image: url('{{ url_avatar }}')"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="mb-3 mt-4 text-center">
+            <button type="submit" class="btn rounded-pill btn-primary">
+              Guardar registro ahora
+              <i class="bi bi-arrow-clockwise"></i>
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  {% else %}
+  <div class="row justify-content-center mb-2">
+    <div class="col-md-12">
+      <h3 class="text-center">No existe el sitio</h3>
+    </div>
+  </div>
+
+  {% endif %}
+</div>
+{% endblock %} {% block customJS %}
+<script src="{{ url_for('static', filename ='assets/customJS/file.js') }}"></script>
+{% endblock %}

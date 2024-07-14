@@ -1,0 +1,70 @@
+{% extends 'public/base_cpanel.html' %}
+<!--Cambiando el title-->
+{% block title %}Crud con Python 🐍 | Lista de Sitios{% endblock %}
+<!--Inicio del block-->
+{% block body %}
+
+<div class="card" style="border-radius: 0px !important">
+  <div class="row justify-content-center mb-2">
+    <div class="col-md-12 mb-4">
+      <h3 class="text-center mt-5 mb-3">LISTA DE SITIOS</h3>
+      <hr />
+    </div>
+
+    <div class="row justify-content-end">
+      <div class="col-md-6 mt-4 py-2">
+        <input type="search" id="search" class="form-control border-0 shadow-none" placeholder="Buscar sitio..."
+          onkeyup="buscadorTable('tbl_sitios')" />
+      </div>
+    </div>
+
+    <div class="row justify-content-center mb-2">
+      <div class="table-responsive table-hover">
+        <table table-hover id="tbl_sitios" class="table table-striped table-bordered" cellspacing="0" width="100%">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Nombre</th>
+              <th>Ciudad</th>
+              <th>Provincia</th>
+              <th>Descripcion</th>
+              <th>Acción</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for sitio in sitios %}
+            <tr id="sitio_{{ sitio.id_sitio }}">
+              <td>{{ loop.index }}</td>
+              <td>{{ sitio.nombre_sitio }}</td>
+              <td>{{ sitio.ciudad_sitio }}</td>
+              <td>{{ sitio.provincia_sitio }}</td>
+              <td style="max-width: 100px; flex: 1; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+                {{ sitio.descripcion_sitio }}
+              </td>
+              <td class="text-nowrap">
+                <a href="/detalles-sitio/{{ sitio.id_sitio }}" type="button" class="btn btn-info btn-sm"
+                  data-bs-toggle="tooltip" data-bs-offset="0,4" data-bs-placement="top" data-bs-html="true"
+                  title="<span>Ver detalles</span>">
+                  <i class="bi bi-eye fs-5"></i>
+                </a>
+                <a href="{{ url_for('viewEditarSitio', id = sitio.id_sitio) }}" class="btn btn-success btn-sm"
+                  data-bs-toggle="tooltip" data-bs-offset="0,4" data-bs-placement="top" data-bs-html="true"
+                  title="<span>Editar</span>">
+                  <i class="bi bi-pencil-square fs-5"></i>
+                </a>
+                <a href="#" onclick="eliminarSitio('{{ sitio.id_sitio }}','{{ sitio.foto_sitio }}');"
+                  class="btn btn-danger btn-sm" data-bs-toggle="tooltip" data-bs-offset="0,4" data-bs-placement="top"
+                  data-bs-html="true" title="<span>Eliminar</span>">
+                  <i class="bi bi-trash3 fs-5"></i>
+                </a>
+              </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

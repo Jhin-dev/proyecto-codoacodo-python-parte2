@@ -1,0 +1,50 @@
+<aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
+  <div class="app-brand demo bg-dark">
+    <!-- <a href="{{ url_for('inicio') }}" class="app-brand-link">
+      <span class="app-brand-logo demo">
+        <img src="{{ url_for('static', filename ='assets/img/logo.png') }}" alt="Logo" />
+      </span>
+    </a> -->
+    <a href="{{ url_for('inicio') }}" class="app-brand-link py-4 fw-semibold fs-1">
+      <span class="text-white">Se</span><span class="ndas">nDas</span>
+    </a>
+
+    <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto d-block d-xl-none">
+      <i class="bx bx-chevron-left bx-sm align-middle"></i>
+    </a>
+  </div>
+
+  <div class="menu-inner-shadow"></div>
+  <ul class="menu-inner py-2">
+    <li class="menu-item {% if request.path == '/registrar-sitio' %} active {% endif %}">
+      <a href="{{ url_for('viewFormSitio') }}" class="menu-link">
+        <i class="menu-icon bi bi-clipboard2-plus"></i>
+        <div data-i18n="Basic">Registrar Sitio</div>
+      </a>
+    </li>
+    <li class="menu-item {% if request.path == '/lista-de-sitios' %} active{% endif %}">
+      <a href="/lista-de-sitios" class="menu-link">
+        <i class="menu-icon bi bi-map"></i>
+        <div data-i18n="Boxicons">Lista de Sitios</div>
+      </a>
+    </li>
+    <li class="menu-item {% if request.path == '/lista-de-usuarios' %} active {% endif %}">
+      <a href="/lista-de-usuarios" class="menu-link">
+        <i class="menu-icon bi bi-person-lines-fill"></i>
+        <div data-i18n="Tables">Lista de Usuarios</div>
+      </a>
+    </li>
+    <li class="menu-item {% if request.path == '/mi-perfil' %} active {% endif %}">
+      <a href="/mi-perfil" class="menu-link">
+        <i class="menu-icon bi bi-person-fill-gear"></i>
+        <div data-i18n="Tables">Mi Perfil</div>
+      </a>
+    </li>
+    <li class="menu-item">
+      <a href="{{ url_for('cerraSesion') }}" class="menu-link">
+        <i class="menu-icon tf-icons bx bx-lock-open-alt"></i>
+        <div data-i18n="Tables">Salir</div>
+      </a>
+    </li>
+  </ul>
+</aside>

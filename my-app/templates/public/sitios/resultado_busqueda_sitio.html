@@ -1,0 +1,44 @@
+{% for sitio in dataBusqueda %}
+<tr id="sitio_{{ sitio.id_sitio }}">
+  <td>{{ loop.index }}</td>
+  <td>{{ sitio.nombre_sitio }}</td>
+  <td>{{ sitio.ciudad_sitio }}</td>
+  <td>{{ sitio.provincia_sitio }}</td>
+  <td>{{ sitio.descripcion_sitio }}</td>
+  <td>
+    <a
+      href="/detalles-sitio/{{ sitio.id_sitio }}"
+      title="Ver envio"
+      type="button"
+      class="btn btn-info btn-sm"
+      data-bs-toggle="tooltip"
+      data-bs-offset="0,4"
+      data-bs-placement="top"
+      data-bs-html="true"
+      title="<span>Ver detalles</span>">
+      <i class="bi bi-eye"></i>
+      Ver detalles
+    </a>
+    <a
+      href="{{ url_for('viewEditarSitio', id = sitio.id_sitio) }}"
+      class="btn btn-success btn-sm"
+      tooltip="Actualizar Registro">
+      <i class="bi bi-arrow-clockwise"></i>
+      Actualizar
+    </a>
+    <a
+      href="#"
+      onclick="eliminarSitio('{{ sitio.id_sitio }}');"
+      class="btn btn-danger btn-sm"
+      data-bs-toggle="tooltip"
+      data-bs-offset="0,4"
+      data-bs-placement="top"
+      data-bs-html="true"
+      title="<span>Eliminar Sitio {{ sitio.nombre_sitio }}</span>">
+      <i class="bi bi-trash3"></i>
+      Eliminar
+    </a>
+  </td>
+</tr>
+
+{% endfor %}
