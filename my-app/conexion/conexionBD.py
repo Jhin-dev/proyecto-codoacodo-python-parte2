@@ -12,6 +12,7 @@ def connectionBD():
             host=config('MYSQL_HOST'),
             user=config('MYSQL_USER'),
             passwd=config('MYSQL_PASSWORD'),
+            port=config('MYSQL_PORT'),
             database=config('MYSQL_DATABASE'),
             charset='utf8mb4',
             collation='utf8mb4_unicode_ci',
