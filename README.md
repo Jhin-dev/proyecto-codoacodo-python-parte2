@@ -2,6 +2,9 @@
 
 ## <ul align="center"> <picture><img  src = "https://github.com/7oSkaaa/7oSkaaa/blob/main/Images/about_me.gif?raw=true" width=50px></picture> Tema: Página Turismo 😈🤝</ul>
 
+### Equipo: 
+Valentina Tommasini, Leandro Formento, Maximiliano Hernandez, Carlos Flores, Diego Menchaca.
+
 #### Estructurar un proyecto web (REST API) de Python y Flask organizando archivos y carpetas de forma ordenada, incluyendo control de administracion.
 
 <picture>
@@ -66,7 +69,7 @@
 
 8. Para visualizar la interfaz vaya a http://localhost:3000 (Esto depende de su configuracion)
 
-9. Los datos el usuario que viene con la base de datos:
+9. Los datos del usuario que viene con la base de datos:
 
    email: admin@admin.com
    password: admin
