@@ -13,7 +13,7 @@ def connectionBD():
             user=config('MYSQL_USER'),
             passwd=config('MYSQL_PASSWORD'),
             port=config('MYSQL_PORT'),
-            database=config('MYSQL_DATABASE'),
+            database=config('MYSQL_DB'),
             charset='utf8mb4',
             collation='utf8mb4_unicode_ci',
             raise_on_warnings=True
